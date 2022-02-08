@@ -1,9 +1,12 @@
 package com.vaibhav.githubclone
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.coroutines.withContext
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -19,14 +22,14 @@ class ProfileActivity : AppCompatActivity() {
 
         initialSetup()
 
-        val response = viewModel.getProfileDetails(user)
-        profileTitle.text = response?.name
+        val response = viewModel.getProfileDetails("vaibhavjain30699")
+        Log.d("vaibhav123456",response.toString())
 
     }
 
-    fun initialSetup(){
+    private fun initialSetup(){
         retrofitService = RetrofitService.getInstance()
-        repository = GithubRepository(retrofitService)
+        repository = GithubRepositoryImpl(retrofitService)
         viewModel = ViewModelProvider(this,ViewModelFactory(repository)).get(GithubViewModel::class.java)
         user = intent.getStringExtra("username").toString()
         profileTitle = findViewById(R.id.profileTitle)

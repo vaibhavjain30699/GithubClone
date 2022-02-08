@@ -22,15 +22,13 @@ class MainActivity : AppCompatActivity() {
 
             val usernameValue = username.text
 
-            if(usernameValue.isEmpty()){
-                username.setError("Please enter a username!")
-            }else{
-                val intent = Intent(this,ProfileActivity::class.java)
-                intent.putExtra("username",usernameValue)
+            if (usernameValue.isEmpty()) {
+                username.error = "Please enter a username!"
+            } else {
+                val intent = Intent(this, ProfileActivity::class.java)
+                intent.putExtra("username", usernameValue)
                 startActivity(intent)
             }
-
         }
-
     }
 }

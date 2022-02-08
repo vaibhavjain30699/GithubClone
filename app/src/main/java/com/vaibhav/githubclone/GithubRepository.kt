@@ -1,7 +1,16 @@
 package com.vaibhav.githubclone
 
-class GithubRepository constructor(private val retrofitService: RetrofitService) {
+import retrofit2.Response
 
-    suspend fun getProfileDetails(user: String) = retrofitService.getProfileDetails(userID = user)
+interface GithubRepository {
 
+    suspend fun getProfileDetails(user: String): Response<Profile>
+
+}
+
+
+class GithubRepositoryImpl constructor(private val retrofitService: RetrofitService) :
+    GithubRepository {
+
+    override suspend fun getProfileDetails(user: String) = retrofitService.getProfileDetails(user)
 }
