@@ -3,6 +3,8 @@ package com.vaibhav.githubclone
 import com.google.gson.annotations.SerializedName
 
 data class Profile(
+    @SerializedName("login")
+    val userId: String,
     val name: String,
     val company: String?,
     val location: String,
