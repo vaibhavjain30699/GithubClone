@@ -1,11 +1,11 @@
 package com.vaibhav.githubclone
 
+import retrofit2.Call
 import retrofit2.Response
 
 interface GithubRepository {
 
-    suspend fun getProfileDetails(user: String): Response<Profile>
-
+    suspend fun getProfileDetails(user: String): Call<Profile>
 }
 
 

@@ -11,8 +11,8 @@ import retrofit2.http.Path
 
 interface RetrofitService {
 
-    @GET("users/{user}/")
-    suspend fun getProfileDetails(@Path("user") userID: String): Response<Profile>
+    @GET("users/{user}")
+    fun getProfileDetails(@Path("user") userID: String): Call<Profile>
 
     companion object {
         var retrofitService: RetrofitService? = null
@@ -27,7 +27,6 @@ interface RetrofitService {
                     .build()
                 retrofitService = retrofit.create(RetrofitService::class.java)
             }
-
             return retrofitService!!
         }
     }
