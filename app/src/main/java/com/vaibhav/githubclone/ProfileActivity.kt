@@ -1,16 +1,21 @@
 package com.vaibhav.githubclone
 
 import android.graphics.Color
+import android.graphics.Typeface.BOLD
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.TextUtils
+import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
+import androidx.core.text.set
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.withContext
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -61,11 +66,19 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setProfileData(profile: Profile) {
         name.text = profile.name
-        username.text = profile.userId
+        username.text = TextUtils.concat("@",profile.userId)
         bio.text = profile.bio
         Picasso.get().load(profile.avatarURL).into(profilePic)
-        following.text = profile.following.toString()
-        followers.text = profile.followers.toString()
-        noOfRepos.text = profile.publicRepos.toString()
+        following.text = createFormattedStringForTextView(profile.following.toString()," Following")
+        followers.text = createFormattedStringForTextView(profile.followers.toString()," Followers")
+        noOfRepos.text = createFormattedStringForTextView(profile.publicRepos.toString(),"Repos")
+    }
+
+    private fun createFormattedStringForTextView(text: String, suffix: String): CharSequence? {
+        val tempSpanString = SpannableString(text)
+        tempSpanString.setSpan(RelativeSizeSpan(1.35f),0,text.length,0)
+        tempSpanString.setSpan(ForegroundColorSpan(Color.BLACK),0,text.length,0)
+        tempSpanString.setSpan(StyleSpan(BOLD),0,text.length,0)
+        return TextUtils.concat(tempSpanString,"\n",suffix)
     }
 }
