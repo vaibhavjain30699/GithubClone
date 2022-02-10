@@ -14,22 +14,15 @@ import retrofit2.Response
 
 class GithubViewModel constructor(private val repository: GithubRepository) : ViewModel() {
 
-    var profile: MutableLiveData<Profile> = MutableLiveData()
+    private val _profile: MutableLiveData<Profile> = MutableLiveData()
+    val profile: LiveData<Profile> = _profile
     var listOfRepos: MutableLiveData<List<Repository>> = MutableLiveData()
     val listOfContributors: MutableLiveData<List<Contributor>> = MutableLiveData()
 
     fun getProfileDetails(user: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            repository.getProfileDetails(user).apply {
-                enqueue(object : Callback<Profile> {
-                    override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
-                        profile.value = response.body()
-                    }
-
-                    override fun onFailure(call: Call<Profile>, t: Throwable) {
-                        Log.d("GithubViewModel", t.toString())
-                    }
-                })
+            repository.getProfileDetails(user).let { profileTemp ->
+                _profile.postValue(profileTemp)
             }
         }
     }

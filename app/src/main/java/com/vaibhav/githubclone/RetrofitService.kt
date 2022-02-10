@@ -12,7 +12,7 @@ import retrofit2.http.Path
 interface RetrofitService {
 
     @GET("users/{user}")
-    fun getProfileDetails(@Path("user") userID: String): Call<Profile>
+    suspend fun getProfileDetails(@Path("user") userID: String): Profile
 
     @GET("users/{user}/repos")
     fun getRepositoriesForUser(@Path("user") userID: String): Call<List<Repository>>

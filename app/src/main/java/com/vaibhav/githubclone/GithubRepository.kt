@@ -3,7 +3,7 @@ package com.vaibhav.githubclone
 import retrofit2.Call
 
 interface GithubRepository {
-    suspend fun getProfileDetails(user: String): Call<Profile>
+    suspend fun getProfileDetails(user: String): Profile
     suspend fun getRepositoriesForUser(user: String): Call<List<Repository>>
     suspend fun getContributorsForRepository(user: String, repo: String): Call<List<Contributor>>
 }
