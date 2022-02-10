@@ -12,9 +12,11 @@ import android.text.style.StyleSpan
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.text.set
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 
 class ProfileActivity : AppCompatActivity() {
@@ -26,6 +28,10 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var noOfRepos: TextView
     lateinit var followers: TextView
     lateinit var following: TextView
+    lateinit var viewPager: ViewPager
+    lateinit var tabLayout: TabLayout
+
+    lateinit var viewPagerAdapter: ViewPagerAdapter
 
     lateinit var user: String
     lateinit var viewModel: GithubViewModel
@@ -37,6 +43,10 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile)
 
         initialSetup()
+
+        viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
+        viewPager.adapter = viewPagerAdapter
+        tabLayout.setupWithViewPager(viewPager)
 
         viewModel.profile.observe(
             this, Observer {
@@ -62,23 +72,27 @@ class ProfileActivity : AppCompatActivity() {
         noOfRepos = findViewById(R.id.noOfRepos)
         followers = findViewById(R.id.noOfFollowers)
         following = findViewById(R.id.noOfFollowing)
+        viewPager = findViewById(R.id.viewPager)
+        tabLayout = findViewById(R.id.tabLayout)
     }
 
     private fun setProfileData(profile: Profile) {
         name.text = profile.name
-        username.text = TextUtils.concat("@",profile.userId)
+        username.text = TextUtils.concat("@", profile.userId)
         bio.text = profile.bio
         Picasso.get().load(profile.avatarURL).into(profilePic)
-        following.text = createFormattedStringForTextView(profile.following.toString()," Following")
-        followers.text = createFormattedStringForTextView(profile.followers.toString()," Followers")
-        noOfRepos.text = createFormattedStringForTextView(profile.publicRepos.toString(),"Repos")
+        following.text =
+            createFormattedStringForTextView(profile.following.toString(), " Following")
+        followers.text =
+            createFormattedStringForTextView(profile.followers.toString(), " Followers")
+        noOfRepos.text = createFormattedStringForTextView(profile.publicRepos.toString(), "Repos")
     }
 
     private fun createFormattedStringForTextView(text: String, suffix: String): CharSequence? {
         val tempSpanString = SpannableString(text)
-        tempSpanString.setSpan(RelativeSizeSpan(1.35f),0,text.length,0)
-        tempSpanString.setSpan(ForegroundColorSpan(Color.BLACK),0,text.length,0)
-        tempSpanString.setSpan(StyleSpan(BOLD),0,text.length,0)
-        return TextUtils.concat(tempSpanString,"\n",suffix)
+        tempSpanString.setSpan(RelativeSizeSpan(1.35f), 0, text.length, 0)
+        tempSpanString.setSpan(ForegroundColorSpan(Color.BLACK), 0, text.length, 0)
+        tempSpanString.setSpan(StyleSpan(BOLD), 0, text.length, 0)
+        return TextUtils.concat(tempSpanString, "\n", suffix)
     }
 }
