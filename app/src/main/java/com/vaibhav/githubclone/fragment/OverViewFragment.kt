@@ -45,6 +45,30 @@ class OverViewFragment : Fragment() {
                 "Sample Entry",
                 listOf("Sample Entry")
             ),
+            Repository(
+                43,
+                "Sample Entry",
+                "Sample Entry",
+                "Sample Entry",
+                "Sample Entry",
+                listOf("Sample Entry")
+            ),
+            Repository(
+                43,
+                "Sample Entry",
+                "Sample Entry",
+                "Sample Entry",
+                "Sample Entry",
+                listOf("Sample Entry")
+            ),
+            Repository(
+                43,
+                "Sample Entry",
+                "Sample Entry",
+                "Sample Entry",
+                "Sample Entry",
+                listOf("Sample Entry")
+            ),
         )
         val adapter = ReposRecyclerViewAdapter(tempList)
         pinnedReposRecyclerView.adapter = adapter
