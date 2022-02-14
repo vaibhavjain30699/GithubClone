@@ -1,4 +1,4 @@
-package com.vaibhav.githubclone
+package com.vaibhav.githubclone.model
 
 import com.google.gson.annotations.SerializedName
 

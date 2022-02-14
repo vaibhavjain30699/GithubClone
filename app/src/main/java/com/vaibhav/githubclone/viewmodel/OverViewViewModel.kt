@@ -1,4 +1,4 @@
-package com.vaibhav.githubclone
+package com.vaibhav.githubclone.viewmodel
 
 import androidx.lifecycle.ViewModel
 

@@ -1,8 +1,10 @@
-package com.vaibhav.githubclone
+package com.vaibhav.githubclone.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.vaibhav.githubclone.fragment.OverViewFragment
+import com.vaibhav.githubclone.fragment.RepositoriesFragment
 import org.jetbrains.annotations.NotNull
 
 class ViewPagerAdapter constructor(@NotNull fragmentManager: FragmentManager) :

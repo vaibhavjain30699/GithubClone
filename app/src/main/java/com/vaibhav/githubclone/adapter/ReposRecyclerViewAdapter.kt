@@ -1,11 +1,12 @@
-package com.vaibhav.githubclone
+package com.vaibhav.githubclone.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
+import com.vaibhav.githubclone.R
+import com.vaibhav.githubclone.model.Repository
 
 class ReposRecyclerViewAdapter constructor(private val listOfPinnedRepos: List<Repository>) :
     RecyclerView.Adapter<ReposRecyclerViewAdapter.PinnedReposViewHolder>() {

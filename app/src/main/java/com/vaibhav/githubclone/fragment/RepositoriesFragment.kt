@@ -1,4 +1,4 @@
-package com.vaibhav.githubclone
+package com.vaibhav.githubclone.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.vaibhav.githubclone.R
+import com.vaibhav.githubclone.viewmodel.RepositoriesViewModel
 
 class RepositoriesFragment : Fragment() {
 

@@ -1,7 +1,8 @@
-package com.vaibhav.githubclone
+package com.vaibhav.githubclone.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.vaibhav.githubclone.retrofitAPI.GithubRepository
 
 class ViewModelFactory constructor(private val repository: GithubRepository) :
     ViewModelProvider.Factory {

@@ -15,9 +15,15 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
+import com.vaibhav.githubclone.adapter.ViewPagerAdapter
+import com.vaibhav.githubclone.model.Profile
+import com.vaibhav.githubclone.retrofitAPI.GithubRepository
+import com.vaibhav.githubclone.retrofitAPI.GithubRepositoryImpl
+import com.vaibhav.githubclone.retrofitAPI.RetrofitService
+import com.vaibhav.githubclone.viewmodel.GithubViewModel
+import com.vaibhav.githubclone.viewmodel.ViewModelFactory
 
 class ProfileActivity : AppCompatActivity() {
 

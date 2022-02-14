@@ -1,4 +1,4 @@
-package com.vaibhav.githubclone
+package com.vaibhav.githubclone.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,6 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.vaibhav.githubclone.viewmodel.OverViewViewModel
+import com.vaibhav.githubclone.R
+import com.vaibhav.githubclone.adapter.ReposRecyclerViewAdapter
+import com.vaibhav.githubclone.model.Repository
 
 class OverViewFragment : Fragment() {
 
