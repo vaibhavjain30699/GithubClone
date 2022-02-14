@@ -5,9 +5,27 @@
     android:layout_height="match_parent"
     tools:context=".OverViewFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="fjdksjafljdsf" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="8dp"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="Pinned Repository" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pinnedReposRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
 
 </FrameLayout>
