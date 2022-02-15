@@ -19,10 +19,10 @@ interface RetrofitService {
     suspend fun getRepositoriesForUser(@Path("user") userID: String): List<Repository>
 
     @GET("repos/{user}/{repo}/contributors")
-    fun getContributorsForRepository(
+    suspend fun getContributorsForRepository(
         @Path("user") userID: String,
         @Path("repo") repoName: String
-    ): Call<List<Contributor>>
+    ): List<Contributor>
 
     companion object {
         var retrofitService: RetrofitService? = null

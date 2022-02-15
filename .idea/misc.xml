@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/activity_repo_contributors.xml" value="0.19429347826086957" />
+        <entry key="app/src/main/res/layout/item_contributor.xml" value="0.2078804347826087" />
         <entry key="app/src/main/res/layout/item_repository.xml" value="0.2078804347826087" />
         <entry key="app/src/main/res/layout/over_view_fragment.xml" value="0.2078804347826087" />
         <entry key="app/src/main/res/layout/repositories_fragment.xml" value="0.2078804347826087" />

@@ -20,8 +20,9 @@ class GithubViewModel constructor(private val repository: GithubRepository) : Vi
     private val _profile: MutableLiveData<Profile> = MutableLiveData()
     val profile: LiveData<Profile> = _profile
     private var _listOfRepos: MutableLiveData<List<Repository>> = MutableLiveData()
-    var listOfRepos: LiveData<List<Repository>> = _listOfRepos
-    val listOfContributors: MutableLiveData<List<Contributor>> = MutableLiveData()
+    val listOfRepos: LiveData<List<Repository>> = _listOfRepos
+    private var _listOfContributors: MutableLiveData<List<Contributor>> = MutableLiveData()
+    val listOfContributors: LiveData<List<Contributor>> = _listOfContributors
 
     fun getProfileDetails(user: String) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -42,19 +43,8 @@ class GithubViewModel constructor(private val repository: GithubRepository) : Vi
 
     fun getContributorsForRepository(user: String, repo: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            repository.getContributorsForRepository(user, repo).apply {
-                enqueue(object : Callback<List<Contributor>> {
-                    override fun onResponse(
-                        call: Call<List<Contributor>>,
-                        response: Response<List<Contributor>>
-                    ) {
-                        listOfContributors.value = response.body()
-                    }
-
-                    override fun onFailure(call: Call<List<Contributor>>, t: Throwable) {
-                        Log.d("GithubViewModel", t.toString())
-                    }
-                })
+            repository.getContributorsForRepository(user, repo).let { tempList ->
+                _listOfContributors.postValue(tempList)
             }
         }
     }

@@ -99,4 +99,8 @@ class ProfileActivity : AppCompatActivity() {
         noOfStars.text =
             createFormattedStringForTextView(Random.nextInt(1, 1000000).toString(), "Stars")
     }
+
+    companion object {
+        const val REPOSITORY_NAME_TAG = "repository_name"
+    }
 }

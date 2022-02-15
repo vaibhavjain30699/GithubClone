@@ -8,7 +8,7 @@ import retrofit2.Call
 interface GithubRepository {
     suspend fun getProfileDetails(user: String): Profile
     suspend fun getRepositoriesForUser(user: String): List<Repository>
-    suspend fun getContributorsForRepository(user: String, repo: String): Call<List<Contributor>>
+    suspend fun getContributorsForRepository(user: String, repo: String): List<Contributor>
 }
 
 
@@ -23,5 +23,5 @@ class GithubRepositoryImpl constructor(private val retrofitService: RetrofitServ
     override suspend fun getContributorsForRepository(
         user: String,
         repo: String
-    ): Call<List<Contributor>> = retrofitService.getContributorsForRepository(user, repo)
+    ): List<Contributor> = retrofitService.getContributorsForRepository(user, repo)
 }

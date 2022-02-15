@@ -2,4 +2,5 @@
     <string name="app_name">Github Clone</string>
     <string name="username_label">Please enter the username</string>
     <string name="get_details_button_label">Get Details</string>
+    <string name="view_profile_button_label">View Profile</string>
 </resources>
