@@ -27,6 +27,8 @@ class RepoContributorsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_repo_contributors)
 
+        supportActionBar?.title = "Contributors"
+
         initialSetup()
 
         viewModel.listOfContributors.observe(this) {
@@ -43,7 +45,7 @@ class RepoContributorsActivity : AppCompatActivity() {
         viewModel =
             ViewModelProvider(this, ViewModelFactory(repository)).get(GithubViewModel::class.java)
         repositoryName = intent.getStringExtra(ProfileActivity.REPOSITORY_NAME_TAG).toString()
-        user = "vaibhavjain30699"
+        user = intent.getStringExtra(ProfileActivity.USERNAME_TAG).toString()
 
         recyclerView = findViewById(R.id.contributorsRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)

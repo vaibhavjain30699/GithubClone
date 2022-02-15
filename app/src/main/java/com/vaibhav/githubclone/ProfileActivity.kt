@@ -45,6 +45,9 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
+        actionBar?.hide()
+        supportActionBar?.hide()
+
         initialSetup()
 
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
@@ -53,12 +56,11 @@ class ProfileActivity : AppCompatActivity() {
 
         viewModel.profile.observe(
             this, Observer {
-                Log.d("vaibhav123", it.toString())
                 setProfileData(it)
             }
         )
 
-        viewModel.getProfileDetails("vaibhavjain30699")
+        viewModel.getProfileDetails(user)
     }
 
     private fun initialSetup() {
@@ -67,7 +69,7 @@ class ProfileActivity : AppCompatActivity() {
         viewModel =
             ViewModelProvider(this, ViewModelFactory(repository)).get(GithubViewModel::class.java)
         user = intent.getStringExtra("username").toString()
-
+        viewModel.user = user
         name = findViewById(R.id.profileTitle)
         profilePic = findViewById(R.id.profilePicture)
         username = findViewById(R.id.profileUserName)
@@ -96,5 +98,6 @@ class ProfileActivity : AppCompatActivity() {
 
     companion object {
         const val REPOSITORY_NAME_TAG = "repository_name"
+        const val USERNAME_TAG = "username"
     }
 }

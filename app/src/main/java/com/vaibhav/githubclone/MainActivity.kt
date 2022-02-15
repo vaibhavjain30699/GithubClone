@@ -15,6 +15,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        actionBar?.hide()
+        supportActionBar?.hide()
+
         username = findViewById(R.id.username)
         getDetailsButton = findViewById(R.id.getDetails)
 
@@ -26,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 username.error = "Please enter a username!"
             } else {
                 val intent = Intent(this, ProfileActivity::class.java)
-                intent.putExtra("username", usernameValue)
+                intent.putExtra("username", usernameValue.toString())
                 startActivity(intent)
             }
         }

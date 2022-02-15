@@ -14,4 +14,10 @@ data class Repository(
     val forks_count: Int,
     @SerializedName("updated_at")
     val lastUpdated: String,
+    val owner: Owner,
+)
+
+data class Owner(
+    @SerializedName("login")
+    val userID: String
 )

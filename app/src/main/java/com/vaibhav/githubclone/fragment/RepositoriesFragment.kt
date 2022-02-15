@@ -46,7 +46,7 @@ class RepositoriesFragment : Fragment() {
             reposRecyclerViewAdapter = ReposRecyclerViewAdapter(tempList)
             reposRecyclerView.adapter = reposRecyclerViewAdapter
         }
-        githubViewModel.getRepositoriesForUser("vaibhavjain30699")
+        githubViewModel.getRepositoriesForUser(githubViewModel.user)
         // TODO: Use the ViewModel
     }
 

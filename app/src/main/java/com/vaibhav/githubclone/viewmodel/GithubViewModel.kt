@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 
 class GithubViewModel constructor(private val repository: GithubRepository) : ViewModel() {
 
+    lateinit var user: String
     private val _profile: MutableLiveData<Profile> = MutableLiveData()
     val profile: LiveData<Profile> = _profile
     private var _listOfRepos: MutableLiveData<List<Repository>> = MutableLiveData()

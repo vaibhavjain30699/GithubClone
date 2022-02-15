@@ -52,6 +52,7 @@ class ReposRecyclerViewAdapter constructor(private val listOfPinnedRepos: List<R
         holder.repositoryCardView.setOnClickListener {
             val intent = Intent(holder.itemView.context, RepoContributorsActivity::class.java)
             intent.putExtra(ProfileActivity.REPOSITORY_NAME_TAG, tempRepo.name)
+            intent.putExtra(ProfileActivity.USERNAME_TAG, tempRepo.owner.userID)
             holder.itemView.context.startActivity(intent)
         }
     }
