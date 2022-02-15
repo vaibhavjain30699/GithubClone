@@ -96,6 +96,7 @@ class ProfileActivity : AppCompatActivity() {
         followers.text =
             createFormattedStringForTextView(profile.followers.toString(), " Followers")
         noOfRepos.text = createFormattedStringForTextView(profile.publicRepos.toString(), "Repos")
-        noOfStars.text = createFormattedStringForTextView(Random.nextInt(1,1000000).toString(),"Stars")
+        noOfStars.text =
+            createFormattedStringForTextView(Random.nextInt(1, 1000000).toString(), "Stars")
     }
 }

@@ -14,7 +14,7 @@ import com.vaibhav.githubclone.adapter.ReposRecyclerViewAdapter
 import com.vaibhav.githubclone.viewmodel.GithubViewModel
 import com.vaibhav.githubclone.viewmodel.RepositoriesViewModel
 
-class RepositoriesFragment: Fragment() {
+class RepositoriesFragment : Fragment() {
 
     companion object {
         fun newInstance() = RepositoriesFragment()
@@ -40,7 +40,8 @@ class RepositoriesFragment: Fragment() {
         reposRecyclerViewAdapter = ReposRecyclerViewAdapter(emptyList())
         reposRecyclerView.layoutManager = LinearLayoutManager(this.context)
         reposRecyclerView.adapter = reposRecyclerViewAdapter
-        githubViewModel = ViewModelProvider(activity as AppCompatActivity).get(GithubViewModel::class.java)
+        githubViewModel =
+            ViewModelProvider(activity as AppCompatActivity).get(GithubViewModel::class.java)
         githubViewModel.listOfRepos.observe(viewLifecycleOwner) { tempList ->
             reposRecyclerViewAdapter = ReposRecyclerViewAdapter(tempList)
             reposRecyclerView.adapter = reposRecyclerViewAdapter

@@ -50,9 +50,9 @@ object FormatterClass {
     fun getNumberFormatted(number: String): String {
         val num = number.toInt()
         if (num > 1000000)
-            return "${num/1000000}M"
+            return "${num / 1000000}M"
         else if (num > 1000)
-            return "${num/1000}K"
+            return "${num / 1000}K"
         return number
     }
 

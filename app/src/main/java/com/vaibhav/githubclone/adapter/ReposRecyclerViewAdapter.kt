@@ -35,7 +35,7 @@ class ReposRecyclerViewAdapter constructor(private val listOfPinnedRepos: List<R
         holder.title.text = tempRepo.name
         holder.subTitle.text = tempRepo.description ?: "No Description"
         holder.topicTags.isSingleLine = true
-        for(chipData in tempRepo.topics){
+        for (chipData in tempRepo.topics) {
             val chipTemp = Chip(holder.itemView.context)
             chipTemp.text = chipData
             holder.topicTags.addView(chipTemp)

@@ -23,9 +23,9 @@ class ViewPagerAdapter constructor(@NotNull fragmentManager: FragmentManager) :
 
     override fun getPageTitle(position: Int): CharSequence {
         var title: String = ""
-        if(position == 0)
+        if (position == 0)
             title = "Overview"
-        else if(position == 1)
+        else if (position == 1)
             title = "Repositories"
         return title
     }
