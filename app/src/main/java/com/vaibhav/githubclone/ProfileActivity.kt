@@ -1,14 +1,8 @@
 package com.vaibhav.githubclone
 
-import android.graphics.Color
-import android.graphics.Typeface.BOLD
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.SpannableString
 import android.text.TextUtils
-import android.text.style.ForegroundColorSpan
-import android.text.style.RelativeSizeSpan
-import android.text.style.StyleSpan
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView

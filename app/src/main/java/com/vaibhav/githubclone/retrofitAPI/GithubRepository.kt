@@ -3,7 +3,6 @@ package com.vaibhav.githubclone.retrofitAPI
 import com.vaibhav.githubclone.model.Contributor
 import com.vaibhav.githubclone.model.Profile
 import com.vaibhav.githubclone.model.Repository
-import retrofit2.Call
 
 interface GithubRepository {
     suspend fun getProfileDetails(user: String): Profile
