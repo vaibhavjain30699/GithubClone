@@ -1,62 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="175dp"
+    android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:padding="16dp">
+    android:gravity="center"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="16dp"
+    android:layout_margin="4dp">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/repoImage"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        app:shapeAppearance="@style/roundedImageView"
-        android:background="@color/black"
-        app:strokeWidth="4dp"
-        android:padding="4dp"
-        android:src="@drawable/github_logo_repo" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_gravity="center"
+       android:gravity="center"
+       android:padding="16dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="8dp">
+       <com.google.android.material.imageview.ShapeableImageView
+           android:id="@+id/repoImage"
+           android:layout_width="90dp"
+           android:layout_height="90dp"
+           app:shapeAppearance="@style/roundedImageView"
+           android:background="@color/black"
+           app:strokeWidth="4dp"
+           android:padding="4dp"
+           android:src="@drawable/github_logo_repo" />
 
-        <TextView
-            android:id="@+id/title"
-            android:text="Hello World!"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:gravity="center|start"
+           android:padding="8dp">
 
-        <TextView
-            android:id="@+id/subTitle"
-            android:text="Hello World!"
-            android:textSize="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+           <TextView
+               android:id="@+id/title"
+               android:text="Hello World!"
+               android:textSize="25dp"
+               android:textStyle="bold"
+               android:maxLines="1"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/tags"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+           <TextView
+               android:id="@+id/subTitle"
+               android:text="Hello World!"
+               android:textSize="15dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:maxLines="2"/>
 
-            <com.google.android.material.chip.Chip
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="fdjkasf" />
+           <com.google.android.material.chip.ChipGroup
+               android:id="@+id/tags"
+               android:layout_width="match_parent"
+               android:layout_height="48dp">
 
-        </com.google.android.material.chip.ChipGroup>
+           </com.google.android.material.chip.ChipGroup>
 
-        <TextView
-            android:id="@+id/others"
-            android:text="Hello World!"
-            android:textSize="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:orientation="horizontal">
 
-    </LinearLayout>
+               <TextView
+                   android:id="@+id/language"
+                   android:text="Hello"
+                   android:textSize="12dp"
+                   android:layout_weight="1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"/>
 
-</LinearLayout>
+               <TextView
+                   android:id="@+id/starsCount"
+                   android:text="Hello"
+                   android:textSize="12dp"
+                   android:layout_weight="1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:gravity="center|start"
+                   app:drawableStartCompat="@drawable/star_logo" />
+
+               <TextView
+                   android:id="@+id/forks"
+                   android:text="Hello"
+                   android:textSize="12dp"
+                   android:layout_weight="1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:gravity="center|start"
+                   app:drawableStartCompat="@drawable/ic_fork_icon" />
+
+               <TextView
+                   android:id="@+id/lastUpdatedStatus"
+                   android:text="Hello"
+                   android:textSize="12dp"
+                   android:layout_weight="1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:gravity="center"/>
+
+           </LinearLayout>
+
+       </LinearLayout>
+
+   </LinearLayout>
+
+</androidx.cardview.widget.CardView>

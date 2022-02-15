@@ -28,48 +28,49 @@ class OverViewFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.over_view_fragment, container, false)
         pinnedReposRecyclerView = view.findViewById(R.id.pinnedReposRecyclerView)
-        val tempList = listOf(
-            Repository(
-                43,
-                "Sample Entry",
-                "Sample Entry",
-                "Sample Entry",
-                "Sample Entry",
-                listOf("Sample Entry")
-            ),
-            Repository(
-                43,
-                "Sample Entry",
-                "Sample Entry",
-                "Sample Entry",
-                "Sample Entry",
-                listOf("Sample Entry")
-            ),
-            Repository(
-                43,
-                "Sample Entry",
-                "Sample Entry",
-                "Sample Entry",
-                "Sample Entry",
-                listOf("Sample Entry")
-            ),
-            Repository(
-                43,
-                "Sample Entry",
-                "Sample Entry",
-                "Sample Entry",
-                "Sample Entry",
-                listOf("Sample Entry")
-            ),
-            Repository(
-                43,
-                "Sample Entry",
-                "Sample Entry",
-                "Sample Entry",
-                "Sample Entry",
-                listOf("Sample Entry")
-            ),
-        )
+        val tempList = emptyList<Repository>()
+//        val tempList = listOf(
+//            Repository(
+//                43,
+//                "Sample Entry",
+//                "Sample Entry",
+//                "Sample Entry",
+//                "Sample Entry",
+//                listOf("Sample Entry")
+//            ),
+//            Repository(
+//                43,
+//                "Sample Entry",
+//                "Sample Entry",
+//                "Sample Entry",
+//                "Sample Entry",
+//                listOf("Sample Entry")
+//            ),
+//            Repository(
+//                43,
+//                "Sample Entry",
+//                "Sample Entry",
+//                "Sample Entry",
+//                "Sample Entry",
+//                listOf("Sample Entry")
+//            ),
+//            Repository(
+//                43,
+//                "Sample Entry",
+//                "Sample Entry",
+//                "Sample Entry",
+//                "Sample Entry",
+//                listOf("Sample Entry")
+//            ),
+//            Repository(
+//                43,
+//                "Sample Entry",
+//                "Sample Entry",
+//                "Sample Entry",
+//                "Sample Entry",
+//                listOf("Sample Entry")
+//            ),
+//        )
         val adapter = ReposRecyclerViewAdapter(tempList)
         pinnedReposRecyclerView.adapter = adapter
         pinnedReposRecyclerView.layoutManager = LinearLayoutManager(view.context)

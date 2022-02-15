@@ -19,7 +19,8 @@ class GithubViewModel constructor(private val repository: GithubRepository) : Vi
 
     private val _profile: MutableLiveData<Profile> = MutableLiveData()
     val profile: LiveData<Profile> = _profile
-    var listOfRepos: MutableLiveData<List<Repository>> = MutableLiveData()
+    private var _listOfRepos: MutableLiveData<List<Repository>> = MutableLiveData()
+    var listOfRepos: LiveData<List<Repository>> = _listOfRepos
     val listOfContributors: MutableLiveData<List<Contributor>> = MutableLiveData()
 
     fun getProfileDetails(user: String) {
@@ -30,23 +31,13 @@ class GithubViewModel constructor(private val repository: GithubRepository) : Vi
         }
     }
 
-    fun getRepositoriesForUser(user: String) {
+    fun getRepositoriesForUser(user: String): LiveData<List<Repository>> {
         CoroutineScope(Dispatchers.IO).launch {
-            repository.getRepositoriesForUser(user).apply {
-                enqueue(object : Callback<List<Repository>> {
-                    override fun onResponse(
-                        call: Call<List<Repository>>,
-                        response: Response<List<Repository>>
-                    ) {
-                        listOfRepos.value = response.body()
-                    }
-
-                    override fun onFailure(call: Call<List<Repository>>, t: Throwable) {
-                        Log.d("GithubViewModel", t.toString())
-                    }
-                })
+            repository.getRepositoriesForUser(user).let { tempList ->
+                _listOfRepos.postValue(tempList)
             }
         }
+        return listOfRepos
     }
 
     fun getContributorsForRepository(user: String, repo: String) {

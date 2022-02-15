@@ -16,7 +16,7 @@ interface RetrofitService {
     suspend fun getProfileDetails(@Path("user") userID: String): Profile
 
     @GET("users/{user}/repos")
-    fun getRepositoriesForUser(@Path("user") userID: String): Call<List<Repository>>
+    suspend fun getRepositoriesForUser(@Path("user") userID: String): List<Repository>
 
     @GET("repos/{user}/{repo}/contributors")
     fun getContributorsForRepository(
