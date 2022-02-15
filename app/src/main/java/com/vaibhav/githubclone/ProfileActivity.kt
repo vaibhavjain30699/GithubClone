@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
+import com.vaibhav.githubclone.FormatterClass.createFormattedStringForTextView
 import com.vaibhav.githubclone.adapter.ViewPagerAdapter
 import com.vaibhav.githubclone.model.Profile
 import com.vaibhav.githubclone.retrofitAPI.GithubRepository
@@ -24,6 +25,7 @@ import com.vaibhav.githubclone.retrofitAPI.GithubRepositoryImpl
 import com.vaibhav.githubclone.retrofitAPI.RetrofitService
 import com.vaibhav.githubclone.viewmodel.GithubViewModel
 import com.vaibhav.githubclone.viewmodel.ViewModelFactory
+import kotlin.random.Random
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -32,6 +34,7 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var username: TextView
     lateinit var bio: TextView
     lateinit var noOfRepos: TextView
+    lateinit var noOfStars: TextView
     lateinit var followers: TextView
     lateinit var following: TextView
     lateinit var viewPager: ViewPager
@@ -76,6 +79,7 @@ class ProfileActivity : AppCompatActivity() {
         username = findViewById(R.id.profileUserName)
         bio = findViewById(R.id.profileBio)
         noOfRepos = findViewById(R.id.noOfRepos)
+        noOfStars = findViewById(R.id.noOfStars)
         followers = findViewById(R.id.noOfFollowers)
         following = findViewById(R.id.noOfFollowing)
         viewPager = findViewById(R.id.viewPager)
@@ -92,13 +96,6 @@ class ProfileActivity : AppCompatActivity() {
         followers.text =
             createFormattedStringForTextView(profile.followers.toString(), " Followers")
         noOfRepos.text = createFormattedStringForTextView(profile.publicRepos.toString(), "Repos")
-    }
-
-    private fun createFormattedStringForTextView(text: String, suffix: String): CharSequence? {
-        val tempSpanString = SpannableString(text)
-        tempSpanString.setSpan(RelativeSizeSpan(1.35f), 0, text.length, 0)
-        tempSpanString.setSpan(ForegroundColorSpan(Color.BLACK), 0, text.length, 0)
-        tempSpanString.setSpan(StyleSpan(BOLD), 0, text.length, 0)
-        return TextUtils.concat(tempSpanString, "\n", suffix)
+        noOfStars.text = createFormattedStringForTextView(Random.nextInt(1,1000000).toString(),"Stars")
     }
 }
