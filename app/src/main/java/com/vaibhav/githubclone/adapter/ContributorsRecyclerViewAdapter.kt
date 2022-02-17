@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import com.squareup.picasso.Picasso
+import com.vaibhav.githubclone.ProfileActivity
 import com.vaibhav.githubclone.R
 import com.vaibhav.githubclone.model.Contributor
 
@@ -28,8 +29,8 @@ class ContributorsRecyclerViewAdapter constructor(private val contributorsList: 
         holder.contributions.text = "${tempContributor.noOfContributions} contributions"
         Picasso.get().load(tempContributor.avatarURL).into(holder.contributorImage)
         holder.viewProfile.setOnClickListener {
-            val uri = Uri.parse(tempContributor.profileURL)
-            val intent = Intent(Intent.ACTION_VIEW, uri)
+            val intent = Intent(holder.itemView.context, ProfileActivity::class.java)
+            intent.putExtra("username", tempContributor.userID)
             holder.itemView.context.startActivity(intent)
         }
     }
