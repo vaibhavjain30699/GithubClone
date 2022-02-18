@@ -13,9 +13,10 @@ import java.time.format.DateTimeFormatter
 
 object FormatterClass {
 
+    const val DATE_TIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss'Z'"
 
     fun getUpdatedStatusWithGiveDate(lastUpdated: String): String {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        val formatter = DateTimeFormatter.ofPattern(DATE_TIME_PATTERN)
         val date = LocalDateTime.parse(lastUpdated, formatter)
         val milliseconds = date.atOffset(ZoneOffset.UTC).toInstant().toEpochMilli()
         val timePassed = (LocalDateTime.now().atOffset(ZoneOffset.UTC).toInstant()
