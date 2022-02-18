@@ -43,8 +43,10 @@ class RepositoriesFragment : Fragment() {
         githubViewModel =
             ViewModelProvider(activity as AppCompatActivity).get(GithubViewModel::class.java)
         githubViewModel.listOfRepos.observe(viewLifecycleOwner) { tempList ->
-            reposRecyclerViewAdapter = ReposRecyclerViewAdapter(tempList)
-            reposRecyclerView.adapter = reposRecyclerViewAdapter
+            if (tempList != null) {
+                reposRecyclerViewAdapter = ReposRecyclerViewAdapter(tempList)
+                reposRecyclerView.adapter = reposRecyclerViewAdapter
+            }
         }
         githubViewModel.getRepositoriesForUser(githubViewModel.user)
         // TODO: Use the ViewModel

@@ -1,5 +1,6 @@
 package com.vaibhav.githubclone.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,7 +25,7 @@ class GithubViewModel constructor(private val repository: GithubRepository) : Vi
     fun getProfileDetails(user: String) {
         CoroutineScope(Dispatchers.IO).launch {
             repository.getProfileDetails(user).let { profileTemp ->
-                _profile.postValue(profileTemp)
+                _profile.postValue(profileTemp.body())
             }
         }
     }
@@ -32,7 +33,7 @@ class GithubViewModel constructor(private val repository: GithubRepository) : Vi
     fun getRepositoriesForUser(user: String): LiveData<List<Repository>> {
         CoroutineScope(Dispatchers.IO).launch {
             repository.getRepositoriesForUser(user).let { tempList ->
-                _listOfRepos.postValue(tempList)
+                _listOfRepos.postValue(tempList.body())
             }
         }
         return listOfRepos
@@ -41,7 +42,7 @@ class GithubViewModel constructor(private val repository: GithubRepository) : Vi
     fun getContributorsForRepository(user: String, repo: String) {
         CoroutineScope(Dispatchers.IO).launch {
             repository.getContributorsForRepository(user, repo).let { tempList ->
-                _listOfContributors.postValue(tempList)
+                _listOfContributors.postValue(tempList.body())
             }
         }
     }

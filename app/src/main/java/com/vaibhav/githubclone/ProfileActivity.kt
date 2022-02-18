@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
@@ -82,18 +83,24 @@ class ProfileActivity : AppCompatActivity() {
         tabLayout = findViewById(R.id.tabLayout)
     }
 
-    private fun setProfileData(profile: Profile) {
-        name.text = profile.name
-        username.text = TextUtils.concat("@", profile.userId)
-        bio.text = profile.bio
-        Picasso.get().load(profile.avatarURL).into(profilePic)
-        following.text =
-            createFormattedStringForTextView(profile.following.toString(), " Following")
-        followers.text =
-            createFormattedStringForTextView(profile.followers.toString(), " Followers")
-        noOfRepos.text = createFormattedStringForTextView(profile.publicRepos.toString(), "Repos")
-        noOfStars.text =
-            createFormattedStringForTextView(Random.nextInt(1, 1000000).toString(), "Stars")
+    private fun setProfileData(profile: Profile?) {
+        if (profile != null) {
+            name.text = profile.name
+            username.text = TextUtils.concat("@", profile.userId)
+            bio.text = profile.bio
+            Picasso.get().load(profile.avatarURL).into(profilePic)
+            following.text =
+                createFormattedStringForTextView(profile.following.toString(), " Following")
+            followers.text =
+                createFormattedStringForTextView(profile.followers.toString(), " Followers")
+            noOfRepos.text =
+                createFormattedStringForTextView(profile.publicRepos.toString(), "Repos")
+            noOfStars.text =
+                createFormattedStringForTextView(Random.nextInt(1, 1000000).toString(), "Stars")
+        } else {
+            Toast.makeText(this, "Profile Not Found!", Toast.LENGTH_LONG).show()
+            finish()
+        }
     }
 
     companion object {
