@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.vaibhav.githubclone.EspressoIdlingResource
 import com.vaibhav.githubclone.retrofitAPI.GithubRepository
 import com.vaibhav.githubclone.model.Contributor
 import com.vaibhav.githubclone.model.Profile
@@ -24,26 +25,32 @@ class GithubViewModel constructor(private val repository: GithubRepository) : Vi
 
     fun getProfileDetails(user: String) {
         CoroutineScope(Dispatchers.IO).launch {
+            EspressoIdlingResource.increment()
             repository.getProfileDetails(user).let { profileTemp ->
                 _profile.postValue(profileTemp.body())
             }
+            EspressoIdlingResource.decrement()
         }
     }
 
     fun getRepositoriesForUser(user: String): LiveData<List<Repository>> {
+        EspressoIdlingResource.increment()
         CoroutineScope(Dispatchers.IO).launch {
             repository.getRepositoriesForUser(user).let { tempList ->
                 _listOfRepos.postValue(tempList.body())
             }
         }
+        EspressoIdlingResource.decrement()
         return listOfRepos
     }
 
     fun getContributorsForRepository(user: String, repo: String) {
+        EspressoIdlingResource.increment()
         CoroutineScope(Dispatchers.IO).launch {
             repository.getContributorsForRepository(user, repo).let { tempList ->
                 _listOfContributors.postValue(tempList.body())
             }
         }
+        EspressoIdlingResource.decrement()
     }
 }

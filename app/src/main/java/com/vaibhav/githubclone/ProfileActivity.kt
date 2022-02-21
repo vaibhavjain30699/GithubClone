@@ -51,9 +51,11 @@ class ProfileActivity : AppCompatActivity() {
 
         initialSetup()
 
+        EspressoIdlingResource.increment()
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPager.adapter = viewPagerAdapter
         tabLayout.setupWithViewPager(viewPager)
+        EspressoIdlingResource.decrement()
 
         viewModel.profile.observe(
             this, Observer {
