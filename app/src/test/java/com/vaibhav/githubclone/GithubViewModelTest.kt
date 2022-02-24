@@ -1,5 +1,8 @@
 package com.vaibhav.githubclone
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.vaibhav.githubclone.model.Profile
 import com.vaibhav.githubclone.retrofitAPI.GithubRepository
 import com.vaibhav.githubclone.retrofitAPI.GithubRepositoryImpl
@@ -10,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -17,13 +21,20 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import retrofit2.Response
+import org.mockito.Mockito.verify
+import org.junit.Assert.assertEquals
+
 
 @RunWith(JUnit4::class)
 class GithubViewModelTest {
 
-    @Mock
-    private lateinit var retrofitService: RetrofitService
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
+    @Mock
+    lateinit var profileObserver: Observer<Profile>
+
+    @Mock
     private lateinit var repository: GithubRepository
     private lateinit var githubViewModel: GithubViewModel
     lateinit var profile: Profile
@@ -33,7 +44,6 @@ class GithubViewModelTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        repository = GithubRepositoryImpl(retrofitService)
         githubViewModel = GithubViewModel(repository)
         user = "vaibhavjain30699"
         profile = Profile(
@@ -49,12 +59,13 @@ class GithubViewModelTest {
         )
         runBlocking {
             val job = CoroutineScope(Dispatchers.IO).async {
-                Mockito.`when`(retrofitService.getProfileDetails(user)).thenReturn(
+                Mockito.`when`(repository.getProfileDetails(user)).thenReturn(
                     Response.success(profile)
                 )
             }
             job.await()
         }
+        githubViewModel.profile.observeForever(profileObserver)
     }
 
     @Test
@@ -65,7 +76,7 @@ class GithubViewModelTest {
             }
             job.await()
         }
-        if (githubViewModel.profile.value != null)
-            assert(githubViewModel.profile.value!!.userId == user)
+        verify(profileObserver)
+        assertEquals(profile, githubViewModel.profile)
     }
 }

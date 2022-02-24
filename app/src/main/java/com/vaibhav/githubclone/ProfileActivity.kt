@@ -54,6 +54,7 @@ class ProfileActivity : AppCompatActivity() {
         EspressoIdlingResource.increment()
         viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
         viewPager.adapter = viewPagerAdapter
+        viewPager.currentItem = 1
         tabLayout.setupWithViewPager(viewPager)
         EspressoIdlingResource.decrement()
 

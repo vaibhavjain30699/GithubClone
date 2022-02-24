@@ -1,127 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity"
-    android:orientation="vertical"
-    android:gravity="center|top">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_alignParentTop="true"
+        android:fitsSystemWindows="true">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="vertical"
-            android:background="@drawable/profile_background"
-            android:gravity="center"
-            android:paddingVertical="32dp"
-            android:paddingHorizontal="16dp">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profilePicture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:shapeAppearance="@style/roundedImageView"
-                app:strokeColor="@color/white"
-                app:strokeWidth="4dp"
-                android:padding="4dp"
-                android:src="@drawable/ic_launcher_background"/>
-
-            <TextView
-                android:id="@+id/profileTitle"
+            <LinearLayout
+                android:id="@+id/linearLayout1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hello World!"
-                android:textSize="25dp"
+                android:layout_height="350dp"
+                android:background="@drawable/profile_background"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="32dp">
 
-            <TextView
-                android:id="@+id/profileUserName"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profilePicture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:shapeAppearance="@style/roundedImageView"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="4dp" />
+
+                <TextView
+                    android:id="@+id/profileTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Hello World!"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/profileUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Hello World!"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/profileBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Hello World!"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hello World!"
-                android:textSize="15dp"
-                android:gravity="center"
-                android:textColor="@color/white"/>
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="16dp">
 
-            <TextView
-                android:id="@+id/profileBio"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hello World!"
-                android:textSize="15dp"
-                android:gravity="center"
-                android:textColor="@color/white"/>
+                <TextView
+                    android:id="@+id/noOfRepos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Hello World!" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/noOfStars"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Hello World!" />
 
+                <TextView
+                    android:id="@+id/noOfFollowers"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Hello World!" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:orientation="horizontal"
-            android:paddingVertical="16dp"
-            android:paddingHorizontal="8dp">
+                <TextView
+                    android:id="@+id/noOfFollowing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Hello World!" />
 
-            <TextView
-                android:id="@+id/noOfRepos"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Hello World!"
-                android:gravity="center"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/noOfStars"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Hello World!"
-                android:gravity="center"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/noOfFollowers"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Hello World!"
-                android:gravity="center"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/noOfFollowing"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Hello World!"
-                android:gravity="center"
-                android:layout_weight="1"/>
-
+            </LinearLayout>
 
         </LinearLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            app:tabGravity="start">
+            app:tabGravity="start" />
 
-        </com.google.android.material.tabs.TabLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="600dp">
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.viewpager.widget.ViewPager>
 
-        </androidx.viewpager.widget.ViewPager>
-
-    </LinearLayout>
-
-
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

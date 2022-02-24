@@ -2,6 +2,7 @@ package com.vaibhav.githubclone
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,7 @@ class RepoContributorsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_repo_contributors)
 
         supportActionBar?.title = "Contributors"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         initialSetup()
 
@@ -37,6 +39,11 @@ class RepoContributorsActivity : AppCompatActivity() {
         }
 
         viewModel.getContributorsForRepository(user, repositoryName)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        finish()
+        return true
     }
 
     private fun initialSetup() {
