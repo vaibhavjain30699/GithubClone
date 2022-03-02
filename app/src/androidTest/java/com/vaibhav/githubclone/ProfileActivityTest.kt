@@ -21,6 +21,8 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayingAtLeast
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import com.vaibhav.githubclone.adapter.ReposRecyclerViewAdapter
+import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 
 @RunWith(JUnit4::class)
 @LargeTest
@@ -59,6 +61,20 @@ class ProfileActivityTest {
             )
         )
     }
+
+    @Test
+    fun checkForRecyclerViewAndScroll() {
+        onView(withText("Repositories")).perform(click())
+        onView(withId(R.id.allReposRecyclerView)).check(matches(isDisplayed()))
+        onView(withId(R.id.allReposRecyclerView)).perform(
+            actionOnItemAtPosition<ReposRecyclerViewAdapter.ReposViewHolder>(
+                0,
+                click()
+            )
+        )
+        onView(withId(R.id.contributorsRecyclerView)).check(matches(isDisplayed()))
+    }
+
 
     class CustomViewAction(
         private val action: ViewAction?,

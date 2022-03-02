@@ -11,6 +11,7 @@ import com.vaibhav.githubclone.model.Profile
 import com.vaibhav.githubclone.model.Repository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class GithubViewModel constructor(private val repository: GithubRepository) : ViewModel() {

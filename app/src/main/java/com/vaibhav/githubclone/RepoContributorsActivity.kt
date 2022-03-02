@@ -32,13 +32,17 @@ class RepoContributorsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         initialSetup()
+        EspressoIdlingResource.increment()
 
         viewModel.listOfContributors.observe(this) {
+            EspressoIdlingResource.increment()
             contributorsRecyclerViewAdapter = ContributorsRecyclerViewAdapter(it)
             recyclerView.adapter = contributorsRecyclerViewAdapter
+            EspressoIdlingResource.decrement()
         }
 
         viewModel.getContributorsForRepository(user, repositoryName)
+        EspressoIdlingResource.decrement()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
